@@ -1,0 +1,69 @@
+<div class="container my-5">
+    <div class="div">
+
+        <button type="button" mdbBtn color="success" rounded="true" data-toggle="modal" data-target="#basicExample"
+            (click)="frame.show()" mdbWavesEffect>Show sports</button>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-3" *ngFor="let sport of selectedItemList">
+            <!-- Card -->
+            <mdb-card>
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+                    <!-- Card img -->
+                    <mdb-card-img src="{{sport.imagePath}}" alt="Card image cap"></mdb-card-img>
+                    <a>
+                        <div class="mask"></div>
+                    </a>
+                </div>
+                <!--Card content-->
+                <mdb-card-body>
+                    <!--Text-->
+                    <mdb-card-title>
+                        <h5>{{sport.name}}</h5>
+                    </mdb-card-title>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
+    </div>
+
+    <!-- Modal -->
+
+    <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-success" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <p class="heading lead">Sports List</p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="ml-5">
+                        <!-- Default checked -->
+                        <div *ngFor="let sport of checkboxDataList">
+                            <label class="form-check-label" for="{{sport.name}}">
+                                <input mdbCheckbox type="checkbox" class="form-check-input" (change)="onChange()"
+                                [checked]="true" [(ngModel)]="sport.isChecked" /> {{sport.name}}
+                            </label>
+
+                        </div>
+                        <div class="mt-2 text-center">
+                            <button mdbBtn type="button" (click)="frame.hide()" color="success"
+                                mdbWavesEffect>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+
+
+</div>

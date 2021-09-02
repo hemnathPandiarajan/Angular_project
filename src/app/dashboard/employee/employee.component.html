@@ -1,0 +1,88 @@
+<div class="container my-5">
+    <div class="d-flex mb-2 pull-right">
+        <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+            (click)="frame.show()" mdbWavesEffect>Add Employee</button>
+    </div>
+    <div>
+        <div class="md-form">
+            <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput />
+            <label for="search">Search</label>
+        </div>
+        <table mdbTable bordered="true" #tableEl="mdbTable" >
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Mob-no</th>
+                    <th scope="col">Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of empList">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.position}}</td>
+                    <td>{{employee.mobNo}}</td>
+                    <td>{{employee.salary}}</td>
+                </tr>
+                <tr>
+            </tbody>
+            <tfoot class="grey lighten-5 w-100">
+                <tr>
+                  <td colspan="5">
+                    <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="empList"></mdb-table-pagination>
+                  </td>
+                </tr>
+                </tfoot>
+        </table>
+    </div>
+
+
+
+    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form [formGroup]="empForm" (ngSubmit)="addEmp()">
+                        <div class="form-group mb-2">
+                            <label for="name">Employee name</label>
+                            <input type="text" name="name" formControlName="name" id="name" class="form-control">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" formControlName="email" id="email" class="form-control">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="position">Position</label>
+                            <input type="text" name="position" formControlName="position" id="position"
+                                class="form-control">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="mobNo">Mobile No.</label>
+                            <input type="number" name="mobNo" formControlName="mobNo" id="mobNo" class="form-control">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="salary">Salary</label>
+                            <input type="number" name="salary" formControlName="salary" id="salary"
+                                class="form-control">
+                        </div>
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button mdbBtn color="primary" (click)="frame.hide()" type="submit"
+                                [disabled]="!empForm.valid" class="waves-light" mdbWavesEffect>Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

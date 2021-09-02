@@ -1,0 +1,31 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['dashboard']">Prodian</a></mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto" [hidden]="!showNav">
+            <li class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['aboutUs']" mdbWavesEffect>About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['employee']"mdbWavesEffect>Employee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['sports']"mdbWavesEffect>Sports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['feedback']"mdbWavesEffect>Feedback</a>
+            </li>
+
+        </ul>
+        <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
